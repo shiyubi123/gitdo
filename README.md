@@ -1,4 +1,4 @@
-# gitlab-down
+# gitdo
 A tool that allows you clone git repository from gitlab or github.
 
 ## install
