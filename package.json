@@ -1,0 +1,27 @@
+{
+  "name": "gitdo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gitdo": "node bin/index.js"
+  },
+  "bin": {
+    "gitdo": "bin/index.js"
+  },
+  "author": "shiyubi123",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "commander": "^6.2.1",
+    "inquirer": "^7.3.3",
+    "ora": "^5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shiyubi123/gitdo.git"
+  },
+  "devDependencies": {}
+}
