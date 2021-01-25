@@ -5,7 +5,7 @@ const axios = require('axios');
 const configPath = path.resolve(__dirname,'./../../config.json')
 
 const getConfig = new Promise(resolve => {
-  fs.readFile(configPath,'utf8',(err,data) => { 
+  fs.readFile(configPath,'utf8', (err, data) => { 
     resolve(JSON.parse(data))
   })
 })
@@ -42,13 +42,13 @@ function errHandle(err) {
       throw 'You may set the wrong url'
     }
     if (err.response.status === 401) {
-      console.log('\n',chalk.red('ResponseError: '),`GitToken verify failed`)
+      console.log('\n', chalk.red('ResponseError: '), `GitToken verify failed`)
     }
     if (err.response.status === 404) {
-      console.log('\n',chalk.red('ResponseError: '),`Your gitUrl may be wrong`)
+      console.log('\n', chalk.red('ResponseError: '), `Your gitUrl may be wrong`)
     }
   } catch (e) {
-    console.log(chalk.red('Error:'),'You may set the wrong url')
+    console.log('\n', chalk.red('Error:'), 'You may set the wrong url')
   }
 }
 

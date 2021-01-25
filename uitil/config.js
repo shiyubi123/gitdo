@@ -5,14 +5,18 @@ const configPath = path.resolve(__dirname,'./../config.json')
 
 async function getConfig() {
   return new Promise(resolve => {
-    fs.readFile(configPath,'utf8', (err, data) => {
+    fs.readFile(configPath, 'utf8', (err, data) => {
+      if(!data) {
+        resolve({})
+        return
+      }
       resolve(JSON.parse(data))
     })
   })
 }
 
 function saveConfig(config, preAnswer) {
-  const newConfig = mergeOptions(config ,preAnswer)
+  const newConfig = mergeOptions(config , preAnswer)
   fs.writeFile(configPath, JSON.stringify(newConfig), 'utf-8', (err) => {
     if (err) {
       console.log('\n', err)
@@ -22,12 +26,7 @@ function saveConfig(config, preAnswer) {
 
 async function editConfig(option) {
   if (option === 'clear') {
-    const config = {
-      GITHUB_URL: 'https://api.github.com',
-      GITHUB_ACCESS_TOKEN: '',
-      GITLAB_URL: '',
-      GITLAB_ACCESS_TOKEN: ''
-    }
+    const config = mergeOptions({}, {})
     fs.writeFile(configPath, JSON.stringify(config), 'utf-8', (err) => {
       if (err) {
         console.log('\n', err)

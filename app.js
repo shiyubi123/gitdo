@@ -34,7 +34,7 @@ async function startInquire(configs) {
       type: 'input',
       message: 'Please input your github token:',
       when: (answers) => {
-        return answers.git[0] === 'github' && !checkConfigs(configs,['GITHUB_ACCESS_TOKEN'])
+        return answers.git.indexOf('github') >= 0 && !checkConfigs(configs,['GITHUB_ACCESS_TOKEN'])
       },
       validate: (input) => {
         if (input.length < 1) {
@@ -48,7 +48,7 @@ async function startInquire(configs) {
       type: 'input',
       message: 'Please input your gitlab url:',
       when: (answers) => {
-        return answers.git[0] === 'gitlab' && !checkConfigs(configs,['GITLAB_URL'])
+        return answers.git.indexOf('gitlab') >= 0 && !checkConfigs(configs,['GITLAB_URL'])
       }
     },
     {
@@ -56,7 +56,7 @@ async function startInquire(configs) {
       type: 'input',
       message: 'Please input your gitlab token:',
       when: (answers) => {
-        return answers.git[0] === 'gitlab' && !checkConfigs(configs,['GITLAB_ACCESS_TOKEN'])
+        return answers.git.indexOf('gitlab') >= 0 && !checkConfigs(configs,['GITLAB_ACCESS_TOKEN'])
       },
       validate: async (input) => {
         if (input.length < 1) {
@@ -147,7 +147,7 @@ async function getGitData(options) {
     let gitReopsData = mergeData(await Promise.all(promiseAry))
     return gitReopsData
   } catch (e) {
-    console.log('\n',chalk.red('Error: '),e)
+    console.log('\n', chalk.red('Error: '), e)
   } finally {
     spinner.stop()
   }
