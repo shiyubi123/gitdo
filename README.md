@@ -31,16 +31,10 @@ There are three options you need to know for clone, you can set them in command 
 
 ## Usage
 
-You can alse use bin :
+You can use bin :
 
 ```bash
 gitdo
-```
-
-or you can also :
-
-```bash
-npm run gitdo
 ```
 
 -e --edit: Edit your git config.
